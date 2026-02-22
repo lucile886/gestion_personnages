@@ -39,7 +39,7 @@ def ecriture_perso():
     if "retourner à l'accueil" in request.form:
             return render_template("accueil.html")
     
-    #s'il n'a rien mis, on affiche la page pour s'inscrire  
+    #s'il n'y a rien, on affiche la page pour l'inscrire  
     return render_template("ecriture_perso.html")
 
 @monapp.route("/ajout_livre", methods=("GET", "POST"))
@@ -61,12 +61,12 @@ def ecriture_roman():
         #si le bouton a été pressé on envoie à la page suivante
         if "retourner à l'accueil" in request.form:
             return render_template("accueil.html")
-        #on ajoute le nouveau personnage à la table
+        #on ajoute le nouveau roman à la table
         cursor.execute("""INSERT INTO Livres (titre, nom_principal, nb_chapitres, theme, epoque) VALUES(?, ?, ?, ?, ?);""", (titre, nom, nb, theme, epoque, ))
         db_persos.commit()
         db_persos.close()
         return render_template("ecriture_roman.html", message= enregistré )
-    #s'il n'a rien mis, on affiche la page pour s'inscrire  
+    #s'il n'y a rien, on affiche la page pour inscrire  
     return render_template("ecriture_roman.html")
 
 @monapp.route("/recherche", methods=['GET'])
@@ -77,6 +77,7 @@ def recherche():
     db_persos.row_factory = sqlite3.Row
     cursor = db_persos.cursor()
 
+    # on regarde quelle barre de recherche a été remplie
     cherche_perso = request.args.get("recherche_perso")
     cherche_roman = request.args.get("recherche_roman")
     cherche_tous_perso = request.args.get("cherche_tous_perso")
@@ -159,9 +160,9 @@ def roman_details(id):
     db_persos.row_factory = sqlite3.Row #pour l'avoir sous forme de dictionnaire
     cursor= db_persos.cursor()
     
-    # Se connecter à la base de données et récupérer les détails du bijou
+    # Se connecter à la base de données et récupérer les détails du livre
     cursor.execute("""SELECT * FROM Livres WHERE id = ?;""", (id,))
-    roman = cursor.fetchone()  # Récupérer le personnage avec cet id
+    roman = cursor.fetchone()  # Récupérer le livre avec cet id
     db_persos.close()
     if roman:
         return render_template("roman_detail.html", roman = roman)
@@ -175,13 +176,15 @@ def roman_details(id):
 @monapp.route('/ajout', methods=['GET', 'POST'])
 def ajout_perso_roman():
     message = None
-
+    
+    #on vérifie quel personnage est ajouté et où
     if request.method == 'POST':
         id_perso = request.form.get('id_perso')
         id_roman = request.form.get('id_roman')
         nom = request.form.get('nom')
         fonction = request.form.get('fonction')
 
+        #si tous les champs sont remplis, on ajoute le personnage à la table
         if id_perso and id_roman and nom and fonction:
             try:
                 id_perso = int(id_perso)
@@ -196,7 +199,7 @@ def ajout_perso_roman():
                 db_persos.close()
 
                 message = "Personnage ajouté avec succès !"
-                return redirect(url_for('accueil'))  # ou autre page
+                return redirect(url_for('accueil'))
 
             except Exception as e:
                 message = f"Erreur : {str(e)}"
@@ -218,6 +221,7 @@ def modifier(id):
 
     message = None
 
+    #on récupère l'information sur ce qu'il faut changer
     if request.method == 'POST':
         change = request.form.get('change')
 
