@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>modification de roman</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body class="livre">
+    <main class="creation">
+      <h1>Modification de : {{roman['titre']}}</h1>
+
+      <!-- Formulaire d'inscription -->
+      <form method="post">
+
+        <legend>qu'est ce qui ne va pas?</legend>
+        <label>titre</label><input type="radio" name="titre" value="titre">
+        <label>nom du personnage</label><input type="radio" name="nom" value="nom">
+        <label>nombre de chapitres</label><input type="radio" name="nb" value="nb">
+        <label>thème</label><input type="radio" name="theme" value="theme">
+        <label>époque</label><input type="radio" name="epoque" value="epoque">
+
+        <legend>ce qu'il faut mettre à la place :</legend>
+        <label>changement</label><input type="text" name="change">
+
+        <input type="submit" value="Valider" class="valider_formulaire">
+      </form>
+
+      <!-- Message d'inscription -->
+      {% if message %}
+        <p style="margin-top: 20px;">{{ message }}</p>
+      {% endif %}
+
+      <!-- Lien pour passer à l'accueil -->
+      <div style="margin-top: 20px;" class="bouttons">
+        <a href="{{ url_for('accueil') }}"><button type="button">Revenir à l'accueil</button></a>
+      </div>
+    </main>
+  </body> 
+</html>

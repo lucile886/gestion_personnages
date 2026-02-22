@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>accueil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bibli">
+           
+    <ul class="bouttons">
+        <li><a href="{{ url_for('ecriture_perso') }}"><button type="button">Ajouter un personnage</button></a></li>
+        <li><a href="{{ url_for('recherche') }}"><button type="button">Rechercher un personnage ou un roman</button></a></li>
+        <li><a href="{{ url_for('ecriture_roman') }}"><button type="button">Ajouter un roman</button></a></li>
+        <li><a href="{{ url_for('ajout_perso_roman') }}"><button type="button">Ajouter un personnage à un livre</button></a></li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Création de personnage</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body class="perso">
+    <main class="creation">
+      <h1>Inscription</h1>
+
+      <!-- Formulaire d'inscription -->
+      <form method="post">
+        <legend>genre (1-4:homme, 2-5: femme, 3-6: non-binaire) :</legend>
+        <label>homme</label><input type="radio" name="genre" value="homme">
+        <label>femme</label><input type="radio" name="genre" value="femme">
+        <label>non-binaire</label><input type="radio" name="genre" value="non-binaire">
+
+        <legend>sexualité (1-4:hétérosexuel, 2-5: homosexuel, 3-6: asexuel) :</legend>
+        <label>heterosexuel</label><input type="radio" name="sexe" value="heterosexuel">
+        <label>homosexuel</label><input type="radio" name="sexe" value="homosexuel">
+        <label>asexuel</label><input type="radio" name="sexe" value="asexuel">
+
+        <legend>age :</legend>
+        <label>age</label><input type="text" name="age">
+
+        <legend>origine (1:nain, 2: elfe, 3: ravageur, 4: Nord-Ouest, 5: Nord-Est, 6: Sud-Ouest, 7: Sud-Est, 8: centre) :</legend>
+        <label>nain</label><input type="radio" name="origine" value="nain">
+        <label>elfe</label><input type="radio" name="origine" value="elfe">
+        <label>ravageur</label><input type="radio" name="origine" value="ravageur">
+        <label>Nord-Ouest</label><input type="radio" name="origine" value="Nord-Ouest">
+        <label>Nord-Est</label><input type="radio" name="origine" value="Nord-Est">
+        <label>Sud-Ouest</label><input type="radio" name="origine" value="Sud-Ouest">
+        <label>Sud-Est</label><input type="radio" name="origine" value="Sud-Est">
+        <label>centre</label><input type="radio" name="origine" value="centre">
+
+        <legend>religion (1:oasisme, 2: primordialisme, 3: duologisme, 4:athéisme) :</legend>
+        <label>oasisme</label><input type="radio" name="religion" value="oasisme">
+        <label>primordialisme</label><input type="radio" name="religion" value="primordialisme">
+        <label>duologisme</label><input type="radio" name="religion" value="duologisme">
+        <label>athéisme</label><input type="radio" name="religion" value="atheisme">
+
+        <legend>classe sociale (1:riche, 2: petite bourgeoisie, 3: modeste, 4: pauvre, 5: très pauvre, 6:autre) :</legend>
+        <label>riche</label><input type="radio" name="classe" value="riche">
+        <label>petite bourgeoisie</label><input type="radio" name="classe" value="petite bourgeoisie">
+        <label>modeste</label><input type="radio" name="classe" value="modeste">
+        <label>pauvre</label><input type="radio" name="classe" value="pauvre">
+        <label>très pauvre</label><input type="radio" name="classe" value="tres pauvre">
+        <label>autre...</label><input type="radio" name="classe" value="autre">
+
+        <legend>caractère numéro 1 (1:réac, 2: déterminé, 3: passif, 4: humble, 5: snob, 6:colérique, 7:de confiance, 8: ambitieux, 9: fort, 10: intelligent, 11: habile, 12: respectueux ) :</legend>
+        <label>réac</label><input type="radio" name="caractereun" value="reac">
+        <label>déterminé</label><input type="radio" name="caractereun" value="determine">
+        <label>passif</label><input type="radio" name="caractereun" value="passif">
+        <label>humble</label><input type="radio" name="caractereun" value="humble">
+        <label>snob</label><input type="radio" name="caractereun" value="snob">
+        <label>colérique</label><input type="radio" name="caractereun" value="colerique">
+        <label>de confiance</label><input type="radio" name="caractereun" value="de confiance">
+        <label>ambitieux</label><input type="radio" name="caractereun" value="ambitieux">
+        <label>fort</label><input type="radio" name="caractereun" value="fort">
+        <label>intelligent</label><input type="radio" name="caractereun" value="intelligent">
+        <label>habile</label><input type="radio" name="caractereun" value="habile">
+        <label>respectueux</label><input type="radio" name="caractereun" value="respectueux">
+
+        <legend>caractère numéro 2 (1:réac, 2: déterminé, 3: passif, 4: humble, 5: snob, 6:colérique, 7:de confiance, 8: ambitieux, 9: fort, 10: intelligent, 11: habile, 12: respectueux) :</legend>
+        <label>réac</label><input type="radio" name="caracteredeux" value="reac">
+        <label>déterminé</label><input type="radio" name="caracteredeux" value="determine">
+        <label>passif</label><input type="radio" name="caracteredeux" value="passif">
+        <label>humble</label><input type="radio" name="caracteredeux" value="humble">
+        <label>snob</label><input type="radio" name="caracteredeux" value="snob">
+        <label>colérique</label><input type="radio" name="caracteredeux" value="colerique">
+        <label>de confiance</label><input type="radio" name="caracteredeux" value="de confiance">
+        <label>ambitieux</label><input type="radio" name="caracteredeux" value="ambitieux">
+        <label>fort</label><input type="radio" name="caracteredeux" value="fort">
+        <label>intelligent</label><input type="radio" name="caracteredeux" value="intelligent">
+        <label>habile</label><input type="radio" name="caracteredeux" value="habile">
+        <label>respectueux</label><input type="radio" name="caracteredeux" value="respectueux">
+
+        <input type="submit" value="Valider" class="valider_formulaire">
+      </form>
+
+      <!-- Message d'inscription -->
+      {% if message %}
+        <p style="margin-top: 20px;">{{ message }}</p>
+      {% endif %}
+
+      <!-- Lien pour passer à l'accueil -->
+      <div class="bouttons">
+        <a href="{{ url_for('accueil') }}"><button type="button">Revenir à l'accueil</button></a>
+      </div>
+    </main>
+  </body>
+</html> 
