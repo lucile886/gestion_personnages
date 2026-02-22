@@ -1,0 +1,135 @@
+/* boutons de navigation entre les pages*/
+.bouttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* centre verticalement */
+    gap: 15px;
+    min-height: 100vh;
+}
+
+.bouttons button {
+    padding: 12px 24px;
+    border-radius: 25px;    /* bords arrondis */
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color:rgb(240, 205, 152);
+}
+
+.bouttons button:hover {
+    transform: scale(1.05);
+}
+
+/* pages de details*/
+.detail div {
+    background-color: rgba(0, 0, 0, 0.6); /* voile sombre */
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 40px auto;
+    color: rgb(240, 205, 152);
+}
+
+.detail h2 {
+    background-color: rgba(0, 0, 0, 0.6); /* voile sombre */
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 40px auto;
+    color: rgb(240, 205, 152);
+}
+
+/*pages de creation*/
+.creation form {
+    background-color: rgba(0, 0, 0, 0.6); /* voile sombre */
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 40px auto;
+    color: rgb(240, 205, 152);
+}
+
+.creation legend {
+        font-size: 2rem;
+}
+
+.creation label {
+    display: flex;
+  flex-direction: column;
+  gap: 12px; /* espace entre chaque option */
+}
+
+.valider_formulaire {
+    border-radius: 25px;
+    align-items: center;
+}
+
+/*page de recherche */
+input[type="search"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.recherche {
+    background-image: url("../images/bibliotheque.jpg");
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.colonne {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* éléments bien alignés */
+    width: 650px;
+    background-color: rgba(255, 255, 255, 0.85); /* colonne claire */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.recherche h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.colonne table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.colonne th,
+.colonne td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+/*pour les fonds*/
+.perso { 
+    background-image: url("../images/livre_personnages.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.livre {
+    background-image: url("../images/livre_ecriture.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.bibli {
+    background-image: url("../images/bibliotheque.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+h1 {
+    color:rgb(8, 121, 83);
+}
